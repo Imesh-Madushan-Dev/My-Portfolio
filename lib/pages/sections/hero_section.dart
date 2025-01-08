@@ -143,18 +143,22 @@ class _HeroSectionState extends State<HeroSection> {
                               'UI/UX Designer',
                               speed: const Duration(milliseconds: 100),
                             ),
+                            TypewriterAnimatedText(
+                              'Web Developer',
+                              speed: const Duration(milliseconds: 100),
+                            ),
                           ],
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      const Text(
-                        "Passionate about creating elegant, user-friendly applications that combine clean code with exceptional design. Specializing in Flutter development and modern UI/UX solutions.",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: kWhite,
-                          height: 1.6,
-                        ),
-                      ),
+                      // const SizedBox(height: 20),
+                      // const Text(
+                      //   "Passionate about creating elegant, user-friendly applications that combine clean code with exceptional design. Specializing in Flutter development and modern UI/UX solutions.",
+                      //   style: TextStyle(
+                      //     fontSize: 16,
+                      //     color: kWhite,
+                      //     height: 1.6,
+                      //   ),
+                      // ),
                       const SizedBox(height: 30),
                       MouseRegion(
                         cursor: SystemMouseCursors.click,
