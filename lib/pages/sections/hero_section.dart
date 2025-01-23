@@ -7,6 +7,9 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:confetti/confetti.dart';
 import '../../constants/colors.dart';
 import '../../widgets/hoverable_iconbutton.dart.dart';
+import '../../utils/web_download.dart'
+    if (dart.library.html) '../../utils/web_download_web.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class HeroSection extends StatefulWidget {
   const HeroSection({super.key});
@@ -165,7 +168,7 @@ class _HeroSectionState extends State<HeroSection> {
                         child: GestureDetector(
                           onTap: () {
                             _confettiController.play();
-                            _launchURL('YOUR_CV_URL_HERE');
+                            _launchURL('cv.pdf');
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -277,15 +280,37 @@ class _HeroSectionState extends State<HeroSection> {
   }) {
     return HoverableIconButton(
       icon: icon,
-      onPressed: () => _launchURL(url),
+      onPressed: () => _launchSocialLink(url),
       hoverColor: kMainColor,
       defaultColor: kWhite.withOpacity(0.6),
     );
   }
 
-  Future<void> _launchURL(String url) async {
-    if (await canLaunchUrl(Uri.parse(url))) {
-      await launchUrl(Uri.parse(url));
+  Future<void> _launchURL(String assetPath) async {
+    if (kIsWeb) {
+      try {
+        final url = 'files/cv.pdf';
+        downloadFile(url, 'cv.pdf');
+      } catch (e) {
+        debugPrint('Error downloading PDF: $e');
+      }
+    } else {
+      if (await canLaunchUrl(Uri.parse(assetPath))) {
+        await launchUrl(Uri.parse(assetPath));
+      }
+    }
+  }
+
+  Future<void> _launchSocialLink(String url) async {
+    final Uri uri = Uri.parse(url);
+    try {
+      await launchUrl(
+        uri,
+        mode: LaunchMode.externalApplication,
+        webOnlyWindowName: '_blank',
+      );
+    } catch (e) {
+      debugPrint('Could not launch $url: $e');
     }
   }
 

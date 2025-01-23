@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 
   <base href="$FLUTTER_BASE_HREF">
@@ -7,16 +8,18 @@
   <meta charset="UTF-8">
   <meta content="IE=Edge" http-equiv="X-UA-Compatible">
   <meta name="description" content="I'm Imesh Madushan">
-  <meta name="description" content="Welcome to my professional portfolio showcasing my skills, projects, and experience in software development and web design. Explore my work and get in touch for collaboration.">
+  <meta name="description"
+    content="Welcome to my portfolio showcasing my skills, projects, and experience in software development and web design. Explore my work and get in touch for collaboration.">
 
   <!-- iOS meta tags & icons -->
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="new_portfolio">
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>Imesh Madushan | Portfolio</title>
   <link rel="manifest" href="manifest.json">
@@ -38,85 +41,93 @@
       position: fixed;
       background-color: #0c0c0c;
       transition: opacity 0.4s ease-out;
+      z-index: 9999;
     }
 
     .loader {
+      width: 65px;
+      aspect-ratio: 1;
       position: relative;
-      width: 120px;
-      height: 120px;
     }
 
     .loader:before,
     .loader:after {
-      content: '';
+      content: "";
       position: absolute;
-      border-radius: 50%;
-      animation: pulse 3s linear infinite;
-    }
-
-    .loader:before {
-      width: 100%;
-      height: 100%;
-      background-color: rgba(156, 255, 0, 0.1);
-      animation-delay: -0.5s;
+      border-radius: 50px;
+      box-shadow: 0 0 0 3px inset #9cff00;
+      animation: l5 2.5s infinite;
     }
 
     .loader:after {
-      width: 75%;
-      height: 75%;
-      background-color: rgba(156, 255, 0, 0.2);
-      top: 12.5%;
-      left: 12.5%;
-      animation-delay: 0s;
+      animation-delay: -1.25s;
+      border-radius: 0;
     }
 
-    @keyframes pulse {
+    @keyframes l5 {
       0% {
-        transform: scale(0.8);
-        opacity: 1;
+        inset: 0 35px 35px 0
       }
-      50% {
-        transform: scale(1.2);
-        opacity: 0.5;
-      }
-      100% {
-        transform: scale(0.8);
-        opacity: 1;
-      }
-    }
 
-    .loader-text {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      color: #9cff00;
-      font-family: 'Poppins', sans-serif;
-      font-size: 16px;
-      font-weight: 500;
-      white-space: nowrap;
+      12.5% {
+        inset: 0 35px 0 0
+      }
+
+      25% {
+        inset: 35px 35px 0 0
+      }
+
+      37.5% {
+        inset: 35px 0 0 0
+      }
+
+      50% {
+        inset: 35px 0 0 35px
+      }
+
+      62.5% {
+        inset: 0 0 0 35px
+      }
+
+      75% {
+        inset: 0 0 35px 35px
+      }
+
+      87.5% {
+        inset: 0 0 35px 0
+      }
+
+      100% {
+        inset: 0 35px 35px 0
+      }
     }
   </style>
 </head>
+
 <body>
   <div id="loading" class="loading">
-    <div class="loader">
-      <div class="loader-text">Welcome</div>
-    </div>
+    <div class="loader"></div>
   </div>
 
+  <!-- Add this div for Flutter web -->
+  <div id="flutter_target"></div>
+
   <script>
-    window.addEventListener('load', function() {
-      setTimeout(function() {
-        var loading = document.getElementById('loading');
-        loading.style.opacity = '0';
-        setTimeout(function() {
-          loading.style.display = 'none';
-        }, 400);
-      }, 3000);
+    window.addEventListener('load', function () {
+      // Wait for Flutter initialization
+      window.addEventListener('flutter-first-frame', function () {
+        setTimeout(function () {
+          var loading = document.getElementById('loading');
+          loading.style.opacity = '0';
+          setTimeout(function () {
+            loading.style.display = 'none';
+          }, 400);
+        }, 1000);
+      });
     });
   </script>
 
-  <script src="flutter_bootstrap.js" async></script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
+
 </html>

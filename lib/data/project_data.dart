@@ -8,8 +8,18 @@ final List<Project> projects = [
     imageUrl: "https://i.ibb.co/jzMKtVC/Untitled-design.jpg",
     category: "Mobile",
     technologies: ["Flutter", "Firebase", "Provider"],
-    githubUrl: "https://github.com/yourusername/ecommerce",
-    liveUrl: "https://play.google.com/store/apps/details?id=com.yourecommerce",
+    githubUrl: "https://github.com/Imesh-Madushan-Dev/Nex-Trader"
+,    liveUrl: "https://nextrader.vercel.app/"
+  ),
+  Project(
+    title: "Graphic Designer Web",
+    description:
+        "A creative portfolio website for graphic designers showcasing their work with stunning visuals and interactive elements.",
+    imageUrl: "https://i.postimg.cc/tTMwZg9X/image.png",
+    category: "Web",
+    technologies: ["Next Js"],
+    githubUrl: "https://github.com/Imesh-Madushan-Dev/",
+    liveUrl: "https://kethmi.vercel.app/",
   ),
   Project(
     title: "Portfolio Website",

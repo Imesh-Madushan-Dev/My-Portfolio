@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../constants/colors.dart';
 import '../models/project.dart';
 
@@ -9,6 +10,15 @@ class ProjectCard extends StatelessWidget {
     super.key,
     required this.project,
   });
+
+  Future<void> _launchURL(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } else {
+      debugPrint('Could not launch $url');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +42,6 @@ class ProjectCard extends StatelessWidget {
               height: 220,
               width: double.infinity,
               fit: BoxFit.cover,
-            
               loadingBuilder: (context, child, loadingProgress) {
                 if (loadingProgress == null) return child;
                 return Container(
@@ -165,9 +174,7 @@ class ProjectCard extends StatelessWidget {
     return MouseRegion(
       cursor: SystemMouseCursors.click,
       child: GestureDetector(
-        onTap: () {
-          // TODO: Implement URL launcher
-        },
+        onTap: () => _launchURL(url),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           decoration: BoxDecoration(
