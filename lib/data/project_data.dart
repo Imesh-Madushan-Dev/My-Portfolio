@@ -2,20 +2,19 @@ import '../models/project.dart';
 
 final List<Project> projects = [
   Project(
-    title: "NexTrader",
-    description:
-        "Learning and tracking platform for traders, built with Flutter and Firebase.",
-    imageUrl: "https://i.ibb.co/jzMKtVC/Untitled-design.jpg",
-    category: "Mobile",
-    technologies: ["Flutter", "Firebase", "Provider"],
-    githubUrl: "https://github.com/Imesh-Madushan-Dev/Nex-Trader"
-,    liveUrl: "https://nextrader.vercel.app/"
-  ),
+      title: "NexTrader",
+      description:
+          "Learning and tracking platform for traders, built with Flutter and Firebase.",
+      imageUrl: "https://i.ibb.co/jzMKtVC/Untitled-design.jpg",
+      category: "Mobile",
+      technologies: ["Flutter", "Firebase", "Provider"],
+      githubUrl: "https://github.com/Imesh-Madushan-Dev/Nex-Trader",
+      liveUrl: "https://nextrader.vercel.app/"),
   Project(
     title: "Graphic Designer Web",
     description:
         "A creative portfolio website for graphic designers showcasing their work with stunning visuals and interactive elements.",
-    imageUrl: "https://i.postimg.cc/tTMwZg9X/image.png",
+    imageUrl: "https://i.postimg.cc/ncKLf8Hd/image.png",
     category: "Web",
     technologies: ["Next Js"],
     githubUrl: "https://github.com/Imesh-Madushan-Dev/",
@@ -42,7 +41,7 @@ final List<Project> projects = [
         "https://github.com/Imesh-Madushan-Dev/Birthday-Web-for-Girlpren",
     liveUrl: "https://birthday-web-ten.vercel.app/",
   ),
-  
+
   Project(
     title: "Inventory Management",
     description:
